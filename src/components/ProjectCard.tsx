@@ -2,22 +2,37 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Star, MapPin, Shield, ShoppingCart } from 'lucide-react';
+import { Star, MapPin, Shield, ShoppingCart, Scale, Check } from 'lucide-react';
 import { Project, SDG_GOALS } from '@/types/marketplace';
 import { addToCart } from '@/data/mockData';
 import { toast } from 'sonner';
+import { useComparison } from '@/contexts/ComparisonContext';
+import { cn } from '@/lib/utils';
 
 interface ProjectCardProps {
   project: Project;
 }
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
+  const { addToComparison, removeFromComparison, isInComparison } = useComparison();
+  const inComparison = isInComparison(project.id);
+
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(project, 1);
     window.dispatchEvent(new CustomEvent('cartUpdated'));
     toast.success(`Added 1 credit from ${project.name} to cart`);
+  };
+
+  const handleToggleComparison = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (inComparison) {
+      removeFromComparison(project.id);
+    } else {
+      addToComparison(project);
+    }
   };
 
   return (
@@ -92,15 +107,29 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             <p className="text-2xl font-bold text-forest">${project.pricePerCredit.toFixed(2)}</p>
             <p className="text-xs text-muted-foreground">per credit</p>
           </div>
-          <Button
-            variant="forest"
-            size="sm"
-            onClick={handleAddToCart}
-            className="gap-2"
-          >
-            <ShoppingCart className="h-4 w-4" />
-            Add
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              variant={inComparison ? "default" : "outline"}
+              size="icon"
+              onClick={handleToggleComparison}
+              className={cn(
+                "h-9 w-9",
+                inComparison && "bg-forest hover:bg-forest-light text-primary-foreground"
+              )}
+              title={inComparison ? "Remove from comparison" : "Add to comparison"}
+            >
+              {inComparison ? <Check className="h-4 w-4" /> : <Scale className="h-4 w-4" />}
+            </Button>
+            <Button
+              variant="forest"
+              size="sm"
+              onClick={handleAddToCart}
+              className="gap-2"
+            >
+              <ShoppingCart className="h-4 w-4" />
+              Add
+            </Button>
+          </div>
         </CardFooter>
       </Card>
     </Link>
