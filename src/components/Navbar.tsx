@@ -1,14 +1,25 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingCart, Leaf, Menu, X } from 'lucide-react';
+import { ShoppingCart, Leaf, Menu, X, User, LogOut, Scale } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import { getCart } from '@/data/mockData';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/contexts/AuthContext';
+import { useComparison } from '@/contexts/ComparisonContext';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
+  const { user, signOut } = useAuth();
+  const { comparisonList } = useComparison();
 
   useEffect(() => {
     const updateCart = () => {
@@ -58,6 +69,19 @@ export const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            {/* Comparison */}
+            {comparisonList.length > 0 && (
+              <Link to="/compare" className="relative">
+                <Button variant="ghost" size="icon" className="relative">
+                  <Scale className="h-5 w-5" />
+                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-forest text-xs text-primary-foreground">
+                    {comparisonList.length}
+                  </span>
+                </Button>
+              </Link>
+            )}
+
+            {/* Cart */}
             <Link to="/cart" className="relative">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
@@ -68,6 +92,43 @@ export const Navbar = () => {
                 )}
               </Button>
             </Link>
+
+            {/* Auth */}
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <div className="h-8 w-8 rounded-full bg-forest/20 flex items-center justify-center">
+                      <User className="h-4 w-4 text-forest" />
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <div className="px-2 py-1.5">
+                    <p className="text-sm font-medium text-foreground truncate">
+                      {user.email}
+                    </p>
+                  </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link to="/orders" className="cursor-pointer">
+                      My Orders
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={signOut} className="cursor-pointer text-destructive">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link to="/auth">
+                <Button variant="forest" size="sm">
+                  Sign In
+                </Button>
+              </Link>
+            )}
             
             {/* Mobile Menu Button */}
             <Button
@@ -97,6 +158,15 @@ export const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            {comparisonList.length > 0 && (
+              <Link
+                to="/compare"
+                onClick={() => setIsOpen(false)}
+                className="block py-2 text-sm font-medium text-muted-foreground hover:text-forest"
+              >
+                Compare ({comparisonList.length})
+              </Link>
+            )}
           </div>
         )}
       </div>
