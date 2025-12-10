@@ -1,8 +1,3 @@
-@import '@fontsource/dm-sans/400.css';
-@import '@fontsource/dm-sans/500.css';
-@import '@fontsource/dm-sans/600.css';
-@import '@fontsource/dm-sans/700.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,18 +43,24 @@
     --sand: 45 40% 96%;
     --sky: 200 60% 50%;
     --sun: 45 90% 55%;
+    --emerald: 160 84% 39%;
+    --emerald-light: 158 64% 52%;
 
     /* Gradients */
     --gradient-forest: linear-gradient(135deg, hsl(152, 60%, 28%) 0%, hsl(165, 50%, 35%) 100%);
     --gradient-nature: linear-gradient(180deg, hsl(120, 15%, 98%) 0%, hsl(150, 20%, 95%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(120, 10%, 98%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(152, 60%, 12%) 0%, hsl(152, 50%, 20%) 50%, hsl(165, 45%, 25%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(152, 60%, 8%) 0%, hsl(152, 50%, 15%) 50%, hsl(165, 45%, 20%) 100%);
+    --gradient-mesh: radial-gradient(ellipse at 30% 20%, hsl(152, 60%, 28%, 0.15) 0%, transparent 50%),
+                     radial-gradient(ellipse at 70% 80%, hsl(165, 50%, 35%, 0.1) 0%, transparent 50%);
+    --gradient-glass: linear-gradient(135deg, hsl(0, 0%, 100%, 0.1) 0%, hsl(0, 0%, 100%, 0.05) 100%);
 
     /* Shadows */
     --shadow-sm: 0 1px 2px hsl(150 15% 10% / 0.05);
     --shadow-md: 0 4px 12px hsl(150 15% 10% / 0.08);
     --shadow-lg: 0 8px 30px hsl(150 15% 10% / 0.12);
     --shadow-glow: 0 0 40px hsl(152 60% 28% / 0.2);
+    --shadow-glow-strong: 0 0 80px hsl(152 60% 28% / 0.4);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -72,22 +73,22 @@
   }
 
   .dark {
-    --background: 150 20% 8%;
+    --background: 150 20% 6%;
     --foreground: 120 15% 95%;
 
-    --card: 150 18% 12%;
+    --card: 150 18% 10%;
     --card-foreground: 120 15% 95%;
 
-    --popover: 150 18% 12%;
+    --popover: 150 18% 10%;
     --popover-foreground: 120 15% 95%;
 
     --primary: 152 55% 45%;
     --primary-foreground: 150 25% 8%;
 
-    --secondary: 150 15% 18%;
+    --secondary: 150 15% 15%;
     --secondary-foreground: 120 15% 90%;
 
-    --muted: 150 15% 18%;
+    --muted: 150 15% 15%;
     --muted-foreground: 150 10% 60%;
 
     --accent: 152 50% 50%;
@@ -96,8 +97,8 @@
     --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 150 15% 20%;
-    --input: 150 15% 20%;
+    --border: 150 15% 18%;
+    --input: 150 15% 18%;
     --ring: 152 55% 45%;
 
     --forest: 152 55% 45%;
@@ -108,9 +109,11 @@
     --sand: 45 15% 15%;
 
     --gradient-forest: linear-gradient(135deg, hsl(152, 55%, 40%) 0%, hsl(165, 45%, 45%) 100%);
-    --gradient-nature: linear-gradient(180deg, hsl(150, 20%, 8%) 0%, hsl(150, 18%, 12%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(150, 18%, 12%) 0%, hsl(150, 15%, 10%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(152, 45%, 8%) 0%, hsl(152, 40%, 15%) 50%, hsl(165, 35%, 18%) 100%);
+    --gradient-nature: linear-gradient(180deg, hsl(150, 20%, 6%) 0%, hsl(150, 18%, 10%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(150, 18%, 10%) 0%, hsl(150, 15%, 8%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(152, 45%, 4%) 0%, hsl(152, 40%, 10%) 50%, hsl(165, 35%, 14%) 100%);
+    --gradient-mesh: radial-gradient(ellipse at 30% 20%, hsl(152, 55%, 45%, 0.1) 0%, transparent 50%),
+                     radial-gradient(ellipse at 70% 80%, hsl(165, 45%, 45%, 0.08) 0%, transparent 50%);
 
     --shadow-glow: 0 0 40px hsl(152 55% 45% / 0.15);
 
@@ -132,12 +135,12 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter Tight', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'DM Sans', sans-serif;
-    @apply font-semibold tracking-tight;
+    font-family: 'Instrument Serif', serif;
+    @apply font-normal tracking-tight;
   }
 }
 
@@ -159,8 +162,73 @@
     background: var(--gradient-hero);
   }
 
+  .bg-gradient-mesh {
+    background: var(--gradient-mesh);
+  }
+
+  .bg-gradient-glass {
+    background: var(--gradient-glass);
+  }
+
   .shadow-glow {
     box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-glow-strong {
+    box-shadow: var(--shadow-glow-strong);
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50;
+  }
+
+  .glass-dark {
+    @apply bg-background/60 backdrop-blur-xl border border-primary-foreground/10;
+  }
+
+  /* Scroll animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-animate-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-animate-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-animate-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-animate-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-animate-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-animate-scale.visible {
+    opacity: 1;
+    transform: scale(1);
   }
 
   .animate-float {
@@ -173,6 +241,53 @@
 
   .animate-scale-in {
     animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  /* Text styles */
+  .font-display {
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .font-sans-tight {
+    font-family: 'Inter Tight', sans-serif;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-forest to-emerald;
+  }
+
+  /* Mesh gradient background */
+  .mesh-bg {
+    background: var(--gradient-mesh);
+    position: relative;
+  }
+
+  .mesh-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, transparent 0%, hsl(var(--background)) 70%);
+    pointer-events: none;
+  }
+
+  /* Animated blob */
+  .blob {
+    animation: blob 10s ease-in-out infinite;
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+
+  .blob-1 {
+    animation-delay: 0s;
+  }
+
+  .blob-2 {
+    animation-delay: 2s;
+  }
+
+  .blob-3 {
+    animation-delay: 4s;
   }
 }
 
