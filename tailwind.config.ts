@@ -135,6 +135,13 @@ export default {
           "50%": { transform: "translate(-20px, 20px) scale(0.9)" },
           "75%": { transform: "translate(30px, 10px) scale(1.05)" },
         },
+        logoPulse: {
+          "0%": { transform: "scale(1)", filter: "drop-shadow(0 0 0 rgba(34,197,94,0))" },
+          "25%": { transform: "scale(1.15)", filter: "drop-shadow(0 0 15px rgba(34,197,94,0.6))" },
+          "50%": { transform: "scale(1)", filter: "drop-shadow(0 0 8px rgba(34,197,94,0.4))" },
+          "75%": { transform: "scale(1.08)", filter: "drop-shadow(0 0 12px rgba(34,197,94,0.5))" },
+          "100%": { transform: "scale(1)", filter: "drop-shadow(0 0 0 rgba(34,197,94,0))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

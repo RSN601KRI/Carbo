@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import carboLogoImage from '@/assets/carbo-logo.png';
 
 interface CarboLogoProps {
@@ -7,6 +8,12 @@ interface CarboLogoProps {
 }
 
 export const CarboLogo = ({ className = '', size = 'md', showText = true }: CarboLogoProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   const sizes = {
     sm: { container: 'h-8 w-8', text: 'text-lg' },
     md: { container: 'h-10 w-10', text: 'text-xl' },
@@ -17,7 +24,12 @@ export const CarboLogo = ({ className = '', size = 'md', showText = true }: Carb
 
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <div className={`flex items-center justify-center ${sizeConfig.container} transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(34,197,94,0.6)]`}>
+      <div 
+        className={`flex items-center justify-center ${sizeConfig.container} transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(34,197,94,0.6)] ${isLoaded ? 'animate-[logoPulse_1.5s_ease-in-out]' : ''}`}
+        style={{
+          animationIterationCount: 1,
+        }}
+      >
         <img 
           src={carboLogoImage} 
           alt="Carbo Logo" 
@@ -25,7 +37,7 @@ export const CarboLogo = ({ className = '', size = 'md', showText = true }: Carb
         />
       </div>
       {showText && (
-        <span className={`font-display ${sizeConfig.text} font-semibold text-foreground tracking-tight`}>
+        <span className={`font-display ${sizeConfig.text} font-semibold text-foreground tracking-tight ${isLoaded ? 'animate-fade-in' : 'opacity-0'}`}>
           Carbo
         </span>
       )}
