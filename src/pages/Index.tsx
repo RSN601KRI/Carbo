@@ -13,6 +13,7 @@ import { ScrollAnimate } from '@/components/ScrollAnimate';
 import { mockProjects } from '@/data/mockData';
 import { CATEGORIES } from '@/types/marketplace';
 import { ArrowRight } from 'lucide-react';
+import { ContactForm } from '@/components/ContactForm';
 
 const Index = () => {
   const featuredProjects = mockProjects.slice(0, 3);
@@ -91,6 +92,7 @@ const Index = () => {
 
         <ProofOfWork />
         <UseCasesSection />
+        <ContactForm />
       </main>
 
       <Footer />
