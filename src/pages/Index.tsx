@@ -7,8 +7,6 @@ import { SolutionSection } from '@/components/SolutionSection';
 import { BenefitsSection } from '@/components/BenefitsSection';
 import { ProofOfWork } from '@/components/ProofOfWork';
 import { UseCasesSection } from '@/components/UseCasesSection';
-import { JoinUsSection } from '@/components/JoinUsSection';
-import { ContactSection } from '@/components/ContactSection';
 import { ProjectCard } from '@/components/ProjectCard';
 import { Button } from '@/components/ui/button';
 import { ScrollAnimate } from '@/components/ScrollAnimate';
@@ -93,8 +91,6 @@ const Index = () => {
 
         <ProofOfWork />
         <UseCasesSection />
-        <JoinUsSection />
-        <ContactSection />
       </main>
 
       <Footer />
