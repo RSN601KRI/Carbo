@@ -26,20 +26,18 @@ export const Footer = () => {
           <div>
             <h4 className="font-display text-foreground text-lg mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-muted-foreground font-sans-tight">
-              <li><a href="#" className="hover:text-forest transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-forest transition-colors">How It Works</a></li>
-              <li><a href="#" className="hover:text-forest transition-colors">Verification Process</a></li>
-              <li><a href="#contact" className="hover:text-forest transition-colors">Contact</a></li>
+              <li><Link to="/about" className="hover:text-forest transition-colors">About Us</Link></li>
+              <li><Link to="/how-it-works" className="hover:text-forest transition-colors">How It Works</Link></li>
+              <li><Link to="/projects" className="hover:text-forest transition-colors">Verification Process</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-display text-foreground text-lg mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-muted-foreground font-sans-tight">
-              <li><a href="#" className="hover:text-forest transition-colors">VERRA Registry</a></li>
-              <li><a href="#" className="hover:text-forest transition-colors">SDG Goals</a></li>
-              <li><a href="#" className="hover:text-forest transition-colors">Carbon Glossary</a></li>
-              <li><a href="#" className="hover:text-forest transition-colors">FAQ</a></li>
+              <li><a href="https://verra.org" target="_blank" rel="noopener noreferrer" className="hover:text-forest transition-colors">VERRA Registry</a></li>
+              <li><a href="https://sdgs.un.org/goals" target="_blank" rel="noopener noreferrer" className="hover:text-forest transition-colors">SDG Goals</a></li>
+              <li><Link to="/faq" className="hover:text-forest transition-colors">FAQ</Link></li>
             </ul>
           </div>
         </div>
