@@ -1,73 +1,172 @@
-# Welcome to your Lovable project
+# Carbo
 
-## Project info
+A full‑stack marketplace application that enables customers to view, compare, order and track both digital and physical products. Built as part of a team challenge focused on designing an end‑to‑end commerce system inspired by leaders like Amazon, Blinkit, Airbnb, Swiggy and CarbonMark.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Overview
 
-## How can I edit this code?
+**Carbo** is designed as a modern marketplace platform aimed at delivering seamless product discovery, ordering, and tracking. Customers can:
 
-There are several ways of editing your application.
+* Browse products across multiple categories.
+* Compare prices from different sellers.
+* Place orders for digital/physical goods.
+* Track deliveries in real time.
+* Read and write customer reviews.
 
-**Use Lovable**
+The app supports flexible marketplace models—fashion goods, food delivery, carbon credits and more.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🏗️ Project Structure
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+Carbo/
+├── public/                 # Static assets
+├── src/                    # Frontend source code (React + TypeScript)
+│   ├── components/         # Reusable UI components
+│   ├── pages/              # Page-level views (Home, Product, Cart, Order Tracking)
+│   ├── hooks/              # Custom React hooks
+│   ├── lib/                # Utilities
+│   └── ...                 
+├── supabase/               # Database schema and configuration
+├── .env                    # Environment variables
+├── package.json            # Dependencies
+├── tailwind.config.ts      # TailwindCSS config
+├── postcss.config.js       # PostCSS config
+└── README.md               # Project documentation
 ```
 
-**Edit a file directly in GitHub**
+## 🛠️ Tech Stack
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### **Frontend**
 
-**Use GitHub Codespaces**
+* React + TypeScript
+* Vite
+* shadcn/ui components
+* Tailwind CSS
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### **Backend**
 
-## What technologies are used for this project?
+* Supabase (PostgreSQL + Authentication + Storage)
+* Edge Functions (serverless operations)
 
-This project is built with:
+### **Other Tools**
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+* ESLint
+* Bun / Node
 
-## How can I deploy this project?
+## ✨ Core Features
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### 🔍 Product Discovery
 
-## Can I connect a custom domain to my Lovable project?
+* Explore products across categories.
+* Search & filters.
+* Product comparison across sellers.
 
-Yes, you can!
+### 🛒 Ordering System
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+* Secure checkout flow.
+* Order summary & confirmation.
+* Both digital and physical product support.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### 🚚 Delivery Tracking
+
+* Real‑time order status updates (Placed → Packed → Shipped → Delivered).
+* Map‑based or step‑based tracking.
+
+### ⭐ Reviews & Ratings
+
+* Users can post reviews after purchase.
+* Read reviews from verified customers.
+
+### 📊 Marketplace‑Specific Add‑Ons
+
+Supports multiple marketplace themes:
+
+#### **Sneaker Marketplace**
+
+* 10‑point authenticity check.
+* Price comparison across sellers.
+* Returns & refund module.
+
+#### **Food Delivery Marketplace**
+
+* Menu digitization (images + details + pricing).
+* Delivery ETA updates.
+* WhatsApp/Chat support for restaurant/delivery partner.
+
+#### **Carbon Credit Marketplace**
+
+* Price per credit.
+* Project categories (Forestry, Renewable energy, Infrastructure, etc.)
+* SDG goals fulfilled per project.
+* Certification details (e.g., VERRA).
+
+## 🧩 Key System Components
+
+### **Authentication**
+
+* Email/password & OAuth via Supabase.
+
+### **Database Schema (Simplified)**
+
+* `users`
+* `products`
+* `sellers`
+* `orders`
+* `order_tracking`
+* `reviews`
+* `categories`
+
+### **State Management**
+
+* React Query or custom hooks.
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the project
+
+```bash
+https://github.com/RSN601KRI/Carbo.git
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+bun install       # or npm install
+```
+
+### 3️⃣ Set up environment variables
+
+Create a `.env` file based on `.env.example`:
+
+```
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+```
+
+### 4️⃣ Run development server
+
+```bash
+bun dev           # or npm run dev
+```
+
+## 🤝 Contributing
+
+1. Fork the repo.
+2. Create a feature branch.
+3. Commit your changes.
+4. Open a pull request.
+
+## 📌 Roadmap
+
+* [ ] Add seller dashboard
+* [ ] Add payments integration (Razorpay/Stripe)
+* [ ] Notifications (SMS / Email)
+* [ ] Map‑based delivery tracking
+* [ ] Admin panel
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🙌 Acknowledgements
+
+Inspired by leading marketplace platforms such as **Amazon, Blinkit, Airbnb, Swiggy, CarbonMark**.
