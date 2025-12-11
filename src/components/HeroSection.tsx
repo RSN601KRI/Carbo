@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Leaf, Shield, Globe, Play } from 'lucide-react';
+import { ArrowRight, Leaf, Shield, Globe } from 'lucide-react';
 import { ScrollAnimate } from './ScrollAnimate';
 import heroImage from '@/assets/hero-forest.jpg';
 
@@ -48,17 +48,13 @@ export const HeroSection = () => {
           </ScrollAnimate>
           
           <ScrollAnimate animation="fade-up" delay={300}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <div className="flex justify-center mb-16">
               <Link to="/projects">
-                <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto group">
+                <Button variant="hero" size="xl" className="gap-2 group">
                   Explore Projects
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Button variant="ghost" size="xl" className="w-full sm:w-auto text-primary-foreground border border-primary-foreground/20 hover:bg-primary-foreground/10 gap-2">
-                <Play className="h-5 w-5" />
-                Watch Demo
-              </Button>
             </div>
           </ScrollAnimate>
           
