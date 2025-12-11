@@ -1,11 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingCart, Leaf, Menu, X, User, LogOut, Scale } from 'lucide-react';
+import { ShoppingCart, Menu, X, User, LogOut, Scale } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import { getCart } from '@/data/mockData';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
 import { useComparison } from '@/contexts/ComparisonContext';
+import { CarboLogo } from '@/components/CarboLogo';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -45,11 +46,8 @@ export const Navbar = () => {
     <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-forest text-primary-foreground shadow-md group-hover:shadow-glow transition-shadow">
-              <Leaf className="h-5 w-5" />
-            </div>
-            <span className="text-xl font-bold text-foreground">CarbonMark</span>
+          <Link to="/" className="group">
+            <CarboLogo size="md" />
           </Link>
 
           {/* Desktop Nav */}

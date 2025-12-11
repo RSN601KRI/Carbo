@@ -17,7 +17,7 @@ export const CarboLogo = ({ className = '', size = 'md', showText = true }: Carb
 
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <div className={`flex items-center justify-center ${sizeConfig.container} transition-transform hover:scale-105`}>
+      <div className={`flex items-center justify-center ${sizeConfig.container} transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(34,197,94,0.6)]`}>
         <img 
           src={carboLogoImage} 
           alt="Carbo Logo" 
@@ -25,7 +25,7 @@ export const CarboLogo = ({ className = '', size = 'md', showText = true }: Carb
         />
       </div>
       {showText && (
-        <span className={`font-display ${sizeConfig.text} font-normal text-foreground tracking-tight`}>
+        <span className={`font-display ${sizeConfig.text} font-semibold text-foreground tracking-tight`}>
           Carbo
         </span>
       )}

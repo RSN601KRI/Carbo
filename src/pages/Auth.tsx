@@ -5,9 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Leaf, Mail, Lock, User, ArrowLeft } from 'lucide-react';
+import { Mail, Lock, User, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
 import { z } from 'zod';
+import { CarboLogo } from '@/components/CarboLogo';
 
 const emailSchema = z.string().email('Invalid email address');
 const passwordSchema = z.string().min(6, 'Password must be at least 6 characters');
@@ -104,9 +105,7 @@ const Auth = () => {
         <Card className="border-0 shadow-lg">
           <CardHeader className="text-center pb-2">
             <div className="flex justify-center mb-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-forest text-primary-foreground shadow-md">
-                <Leaf className="h-7 w-7" />
-              </div>
+              <CarboLogo size="lg" showText={false} />
             </div>
             <CardTitle className="text-2xl">
               {isLogin ? 'Welcome Back' : 'Create Account'}
@@ -114,7 +113,7 @@ const Auth = () => {
             <CardDescription>
               {isLogin
                 ? 'Sign in to track your carbon credit purchases'
-                : 'Join CarbonMark and start offsetting your footprint'}
+                : 'Join Carbo and start offsetting your footprint'}
             </CardDescription>
           </CardHeader>
 
