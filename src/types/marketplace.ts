@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   name: string;
   description: string;
-  category: 'forestry' | 'renewable-energy' | 'infrastructure' | 'agriculture' | 'ocean' | 'waste-management';
+  category: 'forestry' | 'renewable-energy' | 'infrastructure' | 'agriculture' | 'ocean' | 'waste-management' | 'community';
   pricePerCredit: number;
   totalCredits: number;
   availableCredits: number;
@@ -63,6 +63,7 @@ export const CATEGORIES = [
   { id: 'agriculture', name: 'Agriculture', icon: '🌾', description: 'Sustainable farming practices' },
   { id: 'ocean', name: 'Ocean', icon: '🌊', description: 'Marine conservation initiatives' },
   { id: 'waste-management', name: 'Waste Management', icon: '♻️', description: 'Recycling and waste reduction' },
+  { id: 'community', name: 'Community Development', icon: '👥', description: 'Community-based sustainability initiatives' },
 ] as const;
 
 export const SDG_GOALS: Record<number, { name: string; icon: string; color: string }> = {
